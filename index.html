@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инвестор Stars</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Notification -->
+    <div id="notification" class="notification">
+        <p id="notification-text"></p>
+        <button id="close-notification" class="notification-close">Закрыть</button>
+    </div>
+
+    <div class="flex-1 p-3 overflow-y-auto">
+        <!-- Header -->
+        <header class="p-3 flex justify-between items-center">
+            <h1 class="text-xl font-semibold">Инвестор Stars</h1>
+            <div id="user-info" class="text-sm text-gray">@testuser</div>
+        </header>
+
+        <!-- Tab Content -->
+        <main class="flex-1 mt-4">
+            <!-- Home Tab -->
+            <div id="home" class="tab-content active">
+                <div class="flex justify-center icon-container">
+                    <video class="icon-video" autoplay loop muted>
+                        <source src="UtyaDuck157647.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <!-- Balance Section -->
+                <div class="bg-card p-3 mt-4 balance-section">
+                    <h3 class="text-lg font-semibold text-center">Ваш баланс</h3>
+                    <div class="flex items-center justify-center mt-2">
+                        <img src="https://via.placeholder.com/24/FFFF00/000000?text=★" alt="Star Icon" class="star-icon">
+                        <p id="balance-total" class="text-2xl font-bold ml-2">0</p>
+                    </div>
+                    <p id="balance-invested" class="text-sm text-gray text-center mt-2">Инвестировано: 0</p>
+                    <p id="balance-profit" class="text-sm text-gray text-center">Прибыль: 0</p>
+                    <p class="text-sm text-gray text-center mt-2">Прогноз не гарантирован.</p>
+                </div>
+                <!-- History Section -->
+                <div class="bg-card p-3 mt-4 history-section">
+                    <h3 class="text-sm font-medium">История</h3>
+                    <div id="history-list" class="text-sm text-gray mt-2 history-list"></div>
+                    <button id="toggle-history-home" class="toggle-history text-sm text-gray mt-2" style="display: none;">Показать больше</button>
+                    <p class="text-sm text-gray mt-2">Высокий риск.</p>
+                </div>
+                <div class="button-container">
+                    <button id="invest-btn" class="w-full bg-accent py-2 mt-4 button">Инвестировать</button>
+                    <button id="withdraw-btn" class="w-full bg-accent py-2 mt-2 mb-4 button">Вывод</button>
+                </div>
+            </div>
+
+            <!-- Balance Tab -->
+            <div id="balance" class="tab-content">
+                <div class="flex justify-center icon-container">
+                    <video class="icon-video" autoplay loop muted>
+                        <source src="UtyaDuck157647.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <h2 class="text-lg font-semibold text-center">Ваш баланс</h2>
+                <div class="bg-card p-3 mt-4">
+                    <p id="balance-invested-tab" class="text-sm text-gray">Инвестировано: 0</p>
+                    <p id="balance-profit-tab" class="text-sm text-gray">Прибыль: 0</p>
+                    <p id="balance-total-tab" class="text-sm text-gray">Общий: 0</p>
+                    <p class="text-sm text-gray mt-2">Прогноз не гарантирован.</p>
+                </div>
+            </div>
+
+            <!-- Stats Tab -->
+            <div id="stats" class="tab-content">
+                <div class="flex justify-center icon-container">
+                    <video class="icon-video" autoplay loop muted>
+                        <source src="UtyaDuck157647.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <h2 class="text-lg font-semibold text-center">Статистика</h2>
+                <div class="bg-card p-3 mt-4">
+                    <p id="stats-invested" class="text-sm text-gray">Инвестировано: 0</p>
+                    <p id="stats-days" class="text-sm text-gray">Дней: 0/30</p>
+                    <p id="stats-profit" class="text-sm text-gray">Прибыль: 0</p>
+                    <p id="stats-referrals" class="text-sm text-gray">Рефералов: 0</p>
+                    <p id="stats-bonus" class="text-sm text-gray">Бонус: 0</p>
+                    <p class="text-sm text-gray mt-2">Прогноз не гарантирован.</p>
+                </div>
+            </div>
+
+            <!-- History Tab -->
+            <div id="history" class="tab-content">
+                <div class="flex justify-center icon-container">
+                    <video class="icon-video" autoplay loop muted>
+                        <source src="UtyaDuck157647.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <h2 class="text-lg font-semibold text-center">История</h2>
+                <div class="bg-card p-3 mt-4 history-section">
+                    <div id="history-list-tab" class="text-sm text-gray history-list"></div>
+                    <button id="toggle-history-tab" class="toggle-history text-sm text-gray mt-2" style="display: none;">Показать больше</button>
+                    <p class="text-sm text-gray mt-2">Высокий риск.</p>
+                </div>
+            </div>
+
+            <!-- Referrals Tab -->
+            <div id="referrals" class="tab-content">
+                <div class="flex justify-center icon-container">
+                    <video class="icon-video" autoplay loop muted>
+                        <source src="UtyaDuck157647.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <h2 class="text-lg font-semibold text-center">Рефералы</h2>
+                <div class="bg-card p-3 mt-4">
+                    <p class="text-sm text-gray">Приведи друга и получи 10%</p>
+                    <p id="referral-link" class="text-sm text-gray">Твоя ссылка: <code>https://example.com/start=${userId}</code></p>
+                    <p id="referral-count" class="text-sm text-gray">Рефералов: 0</p>
+                    <p id="referral-bonus" class="text-sm text-gray">Бонус: 0</p>
+                    <button id="share-referral" class="w-full bg-accent py-2 mt-2 button">Поделиться</button>
+                    <p class="text-sm text-gray mt-2">Прогноз не гарантирован.</p>
+                </div>
+            </div>
+
+            <!-- Top Tab -->
+            <div id="top" class="tab-content">
+                <div class="flex justify-center icon-container">
+                    <video class="icon-video" autoplay loop muted>
+                        <source src="UtyaDuck157647.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <h2 class="text-lg font-semibold text-center">Кошелёк</h2>
+                <div class="bg-card p-3 mt-4 balance-section">
+                    <div class="flex items-center justify-center mt-2">
+                        <img src="https://via.placeholder.com/24/FFFF00/000000?text=★" alt="Star Icon" class="star-icon">
+                        <p id="top-balance-total" class="text-2xl font-bold ml-2">0</p>
+                    </div>
+                    <p id="top-investors" class="text-sm text-gray text-center mt-2">Всего: 0</p>
+                    <p id="top-invested" class="text-sm text-gray text-center">Инвестировано: 0</p>
+                    <p id="top-profit" class="text-sm text-gray text-center">Заработано: 0</p>
+                    <div id="top-list" class="text-sm text-gray mt-2 history-list"></div>
+                    <button id="toggle-top-list" class="toggle-history text-sm text-gray mt-2" style="display: none;">Показать больше</button>
+                    <p class="text-sm text-gray mt-2">Прогноз не гарантирован.</p>
+                </div>
+            </div>
+
+            <!-- Admin Tab -->
+            <div id="admin" class="tab-content">
+                <div class="flex justify-center icon-container">
+                    <video class="icon-video" autoplay loop muted>
+                        <source src="UtyaDuck157647.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <h2 class="text-lg font-semibold text-center">Админ-панель</h2>
+                <div class="bg-card p-3 mt-4">
+                    <button id="admin-profit-btn" class="w-full bg-accent py-2 mt-2 button">Процент дохода</button>
+                    <button id="admin-stats-btn" class="w-full bg-accent py-2 mt-2 button">Статистика</button>
+                    <button id="admin-buttons-btn" class="w-full bg-accent py-2 mt-2 button">Кнопки пополнения</button>
+                    <button id="admin-min-invest-btn" class="w-full bg-accent py-2 mt-2 button">Минимальная сумма</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Invest Modal -->
+        <div id="invest-modal" class="modal fixed inset-0 bg-overlay flex items-center justify-center">
+            <div class="bg-modal p-3 w-90 max-w-sm modal-content">
+                <h2 class="text-lg font-semibold">Инвестировать</h2>
+                <p id="min-invest-text" class="text-sm text-gray mt-2">Минимальная сумма: 25</p>
+                <div id="invest-options" class="grid grid-cols-2 gap-2 mt-2"></div>
+                <button id="close-invest-modal" class="w-full notification-close mt-2">Закрыть</button>
+                <p class="text-sm text-gray mt-2">Высокий риск.</p>
+            </div>
+        </div>
+
+        <!-- Withdraw Modal -->
+        <div id="withdraw-modal" class="modal fixed inset-0 bg-overlay flex items-center justify-center">
+            <div class="bg-modal p-3 w-90 max-w-sm modal-content">
+                <h2 class="text-lg font-semibold">Вывод прибыли</h2>
+                <p id="withdraw-text" class="text-sm text-gray mt-2">У тебя нет инвестиций.</p>
+                <button id="confirm-withdraw" class="w-full bg-accent py-2 mt-2 button" style="display: none;">Подтвердить</button>
+                <button id="close-withdraw-modal" class="w-full notification-close mt-2">Закрыть</button>
+                <p class="text-sm text-gray mt-2">Вывод не гарантирован.</p>
+            </div>
+        </div>
+
+        <!-- Admin Modals -->
+        <div id="admin-profit-modal" class="modal fixed inset-0 bg-overlay flex items-center justify-center">
+            <div class="bg-modal p-3 w-90 max-w-sm modal-content">
+                <h2 class="text-lg font-semibold">Процент дохода</h2>
+                <p id="current-profit" class="text-sm text-gray mt-2">Текущий процент: 2%</p>
+                <input id="new-profit" type="number" step="0.1" class="w-full bg-secondary text-white p-2 mt-2" placeholder="Новый процент">
+                <button id="save-profit" class="w-full bg-accent py-2 mt-2 button">Сохранить</button>
+                <button id="close-profit-modal" class="w-full notification-close mt-2">Закрыть</button>
+            </div>
+        </div>
+
+        <div id="admin-stats-modal" class="modal fixed inset-0 bg-overlay flex items-center justify-center">
+            <div class="bg-modal p-3 w-90 max-w-sm modal-content">
+                <h2 class="text-lg font-semibold">Статистика</h2>
+                <p id="current-stats" class="text-sm text-gray mt-2">Инвесторов: 0, Инвестировано: 0, Прибыль: 0</p>
+                <input id="new-stats" class="w-full bg-secondary text-white p-2 mt-2" placeholder="инвесторы,инвестировано,прибыль">
+                <button id="save-stats" class="w-full bg-accent py-2 mt-2 button">Сохранить</button>
+                <button id="close-stats-modal" class="w-full notification-close mt-2">Закрыть</button>
+            </div>
+        </div>
+
+        <div id="admin-buttons-modal" class="modal fixed inset-0 bg-overlay flex items-center justify-center">
+            <div class="bg-modal p-3 w-90 max-w-sm modal-content">
+                <h2 class="text-lg font-semibold">Кнопки пополнения</h2>
+                <p id="current-buttons" class="text-sm text-gray mt-2">Текущие суммы: 25, 50, 100, 250, 500, 1000</p>
+                <button id="add-button" class="w-full bg-accent py-2 mt-2 button">Добавить</button>
+                <button id="remove-button" class="w-full bg-accent py-2 mt-2 button">Удалить</button>
+                <button id="close-buttons-modal" class="w-full notification-close mt-2">Закрыть</button>
+            </div>
+        </div>
+
+        <div id="admin-add-button-modal" class="modal fixed inset-0 bg-overlay flex items-center justify-center">
+            <div class="bg-modal p-3 w-90 max-w-sm modal-content">
+                <h2 class="text-lg font-semibold">Добавить сумму</h2>
+                <input id="new-button" type="number" class="w-full bg-secondary text-white p-2 mt-2" placeholder="Новая сумма">
+                <button id="save-new-button" class="w-full bg-accent py-2 mt-2 button">Сохранить</button>
+                <button id="close-add-button-modal" class="w-full notification-close mt-2">Закрыть</button>
+            </div>
+        </div>
+
+        <div id="admin-remove-button-modal" class="modal fixed inset-0 bg-overlay flex items-center justify-center">
+            <div class="bg-modal p-3 w-90 max-w-sm modal-content">
+                <h2 class="text-lg font-semibold">Удалить сумму</h2>
+                <p id="remove-buttons-list" class="text-sm text-gray mt-2">Текущие суммы: 25, 50, 100, 250, 500, 1000</p>
+                <input id="remove-button-input" type="number" class="w-full bg-secondary text-white p-2 mt-2" placeholder="Сумма для удаления">
+                <button id="save-remove-button" class="w-full bg-accent py-2 mt-2 button">Удалить</button>
+                <button id="close-remove-button-modal" class="w-full notification-close mt-2">Закрыть</button>
+            </div>
+        </div>
+
+        <div id="admin-min-invest-modal" class="modal fixed inset-0 bg-overlay flex items-center justify-center">
+            <div class="bg-modal p-3 w-90 max-w-sm modal-content">
+                <h2 class="text-lg font-semibold">Минимальная сумма</h2>
+                <p id="current-min-invest" class="text-sm text-gray mt-2">Текущая сумма: 25</p>
+                <input id="new-min-invest" type="number" class="w-full bg-secondary text-white p-2 mt-2" placeholder="Новая сумма">
+                <button id="save-min-invest" class="w-full bg-accent py-2 mt-2 button">Сохранить</button>
+                <button id="close-min-invest-modal" class="w-full notification-close mt-2">Закрыть</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="navbar flex">
+        <div class="navbar-btn active" data-tab="home">
+            <img src="home.png" alt="Home Icon">
+            <span>Главная</span>
+        </div>
+        <div class="navbar-btn" data-tab="balance">
+            <img src="income.png" alt="Balance Icon">
+            <span>Доход</span>
+        </div>
+        <div class="navbar-btn" data-tab="stats">
+            <img src="stats.png" alt="Stats Icon">
+            <span>Статистика</span>
+        </div>
+        <div class="navbar-btn" data-tab="referrals">
+            <img src="friends.png" alt="Referrals Icon">
+            <span>Друзья</span>
+        </div>
+        <div class="navbar-btn" data-tab="top">
+            <img src="wallet.png" alt="Top Icon">
+            <span>Кошелёк</span>
+        </div>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>
